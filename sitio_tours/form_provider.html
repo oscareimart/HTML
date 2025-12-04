@@ -11,7 +11,7 @@
 
       <form action="">
         <label for="">Nombre</label>
-        <input pattern="/([^A-Za])+/g" type="text" name="name" required />
+        <input pattern="^[A-Za-z]{3,15}$" type="text" name="name" required />
         <br /><br />
 
         <label for="">Empresa</label>
@@ -45,6 +45,16 @@
           <option value="alimentacion">Alimentación</option>
           <option value="otros">Otros</option>
         </select>
+
+        <hr>
+
+        <label for="">Usuario</label>
+        <input pattern="^[A-Za-z]{3,15}$" type="text" name="user" required />
+        <br /><br />
+
+        <label for="">Contraseña</label>
+        <input pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$" type="password" name="password" required />
+        <br /><br />
 
         <br /><br />
         <input type="submit" value="Registrar Proveedor" />
