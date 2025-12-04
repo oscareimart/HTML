@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulario de Proveedor</title>
+  </head>
+  <body>
+    <main>
+      <h1>Registrate como proveedor</h1>
+
+      <form action="">
+        <label for="">Nombre</label>
+        <input pattern="/([^A-Za])+/g" type="text" name="name" required />
+        <br /><br />
+
+        <label for="">Empresa</label>
+        <input
+          pattern="/[a-zA-Z0-9]+/g"
+          type="text"
+          name="company"
+          required
+        /><br /><br />
+
+        <label for="">Correo Electrónico</label>
+        <input
+          pattern="/([a-z][a-z0-9\._-]+)@([a-z-_]+)\.([a-z\.]{2,6})/g"
+          type="email"
+          name="email"
+          required
+        /><br /><br />
+
+        <label for="">Teléfono</label>
+        <input
+          pattern="^([\d])+$"
+          type="tel"
+          name="phone"
+          required
+        /><br /><br />
+
+        <label for="">Tipo de Servicio</label>
+        <select name="service-type">
+          <option value="transporte">Transporte</option>
+          <option value="alojamiento">Alojamiento</option>
+          <option value="alimentacion">Alimentación</option>
+          <option value="otros">Otros</option>
+        </select>
+
+        <br /><br />
+        <input type="submit" value="Registrar Proveedor" />
+      </form>
+
+      <br /><br />
+      <a href="index.html">Ir Atras</a>
+    </main>
+  </body>
+</html>

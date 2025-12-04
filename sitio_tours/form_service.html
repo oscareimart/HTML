@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Servicios</title>
+  </head>
+  <body>
+    <main>
+      <h1>Registra los Servicios</h1>
+
+      <form action="">
+        <label for="">Nombre del Servicio</label>
+        <input
+          pattern="[A-Za-z]{4,8}"
+          type="text"
+          name="service-name"
+          title="de 4 a 8 letras"
+          required
+        /><br /><br />
+
+        <label for="">Descripción</label>
+        <textarea name="description" rows="4" cols="50"></textarea><br /><br />
+
+        <label for="">Precio</label>
+        <input
+          pattern="/^[0-9]+([\,\.][0-9]+)?$/gm"
+          type="number"
+          name="price"
+          title="solo numeros decimales con punto o coma"
+          required
+        /><br /><br />
+
+        <label for="">Duración (días)</label>
+        <input
+          pattern="^([\d])+$"
+          type="number"
+          name="duration"
+          required
+        /><br /><br />
+
+        <input type="submit" value="Registrar Servicio" />
+      </form>
+
+      <br /><br />
+      <a href="index.html">Ir Atras</a>
+    </main>
+  </body>
+</html>

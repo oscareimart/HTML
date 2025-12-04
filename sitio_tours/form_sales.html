@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registra Venta</title>
+  </head>
+  <body>
+    <main>
+      <h1>Registro de Venta</h1>
+
+      <form action="">
+        <label for="">ID de Venta</label>
+        <input
+          pattern="^([\d])+$"
+          type="text"
+          name="sale-id"
+          required
+        /><br /><br />
+
+        <label for="">Nombre del Cliente</label>
+        <input
+          pattern="/([A-Za-z])/g"
+          type="text"
+          name="client-name"
+          required
+        /><br /><br />
+
+        <label for="">Servicio</label>
+        <select name="service-type">
+          <option value="transporte">Transporte</option>
+          <option value="alojamiento">Alojamiento</option>
+          <option value="alimentacion">Alimentación</option>
+          <option value="otros">Otros</option>
+        </select>
+
+        <label for="">Cantidad</label>
+        <input
+          pattern="^([\d])+$"
+          type="number"
+          name="quantity"
+          required
+        /><br /><br />
+
+        <label for="">Precio Total</label>
+        <input
+          pattern="/\be(\w*)s\b/g"
+          type="number"
+          name="total-price"
+          required
+        /><br /><br />
+
+        <label for="">Fecha de Venta</label>
+        <input
+          pattern="/([1-2]{1}[0-9]{3}[\/](01|([0]{1}[1-9]{1})|10|11|12)[\/](01|([0]{1}[1-9]{1})|([1-2]{1}[1-9]{1})|10|20|30|31|32))/g"
+          type="date"
+          name="sale-date"
+          required
+        /><br /><br />
+
+        <input type="submit" value="Registrar Venta" />
+      </form>
+      <br /><br />
+      <a href="index.html">Ir Atras</a>
+    </main>
+  </body>
+</html>
