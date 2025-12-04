@@ -11,12 +11,12 @@
 
       <form action="">
         <label for="">Nombre</label>
-        <input pattern="^[A-Za-z]{3,15}$" type="text" name="name" required />
+        <input pattern="^[A-Za-z0-9]{1,15}$" type="text" name="name" required />
         <br /><br />
 
         <label for="">Empresa</label>
         <input
-          pattern="/[a-zA-Z0-9]+/g"
+          pattern="^[A-Za-z0-9]{4,15}$"
           type="text"
           name="company"
           required
@@ -39,7 +39,8 @@
         /><br /><br />
 
         <label for="">Tipo de Servicio</label>
-        <select name="service-type">
+        <select name="service-type" required>
+          <option value="">Selccione...</option>
           <option value="transporte">Transporte</option>
           <option value="alojamiento">Alojamiento</option>
           <option value="alimentacion">Alimentación</option>
@@ -49,7 +50,7 @@
         <hr>
 
         <label for="">Usuario</label>
-        <input pattern="^[A-Za-z]{3,15}$" type="text" name="user" required />
+        <input pattern="^[A-Za-z0-9]{4,15}$" type="text" name="user" required />
         <br /><br />
 
         <label for="">Contraseña</label>
