@@ -1,0 +1,135 @@
+body {
+  background: #0f1115;
+  font-family: Inter, sans-serif;
+  color: #eaeaea;
+}
+
+.modal {
+  width: 900px;
+  margin: 40px auto;
+  background: #15181e;
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.steps {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.step {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  background: #1f2430;
+  color: #777;
+}
+
+.step.active {
+  background: #4f6bff;
+  color: white;
+}
+
+.content {
+  display: flex;
+  gap: 20px;
+}
+
+.left {
+  flex: 2;
+}
+.right {
+  flex: 1;
+  background: #1b1f2a;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  background: #222;
+  border: none;
+  color: #aaa;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #4f6bff;
+  color: white;
+}
+
+.qr-box {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.qr-box img {
+  width: 180px;
+  margin-bottom: 10px;
+}
+
+.secondary {
+  background: none;
+  border: 1px dashed #555;
+  color: #aaa;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.amount-box {
+  margin-top: 20px;
+}
+
+.amount-box strong {
+  display: block;
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+.right .item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.cancel {
+  background: #333;
+  color: #aaa;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+}
+
+.confirm {
+  background: #4f6bff;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+}

@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #c5c5c5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.content-page {
+  border-radius: 5px;
+  display: block;
+  background-color: #ffffff;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  max-width: 800px;
+  width: 500px;
+}
+
+.header-page {
+  border: 2px;
+  border-color: black;
+  border-style: solid;
+}

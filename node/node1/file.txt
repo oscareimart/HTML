@@ -1,0 +1,5 @@
+estas son mis variables de entorno 😶‍🌫️ :
+
+APP_URL=http://localhost:3001
+FRONT_URL=http://localhost:3002
+SECRET=mi_poderosa_llave_secreta_con_letra_ñ

@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+  --bg: #f6f0e6;
+  --ink: #1c1b1a;
+  --panel: #ffffff;
+  --panel-muted: #f2eadf;
+  --line: #e3d7c7;
+  --brand: #e06b3b;
+  --brand-2: #2b9f8c;
+  --brand-3: #2f3c7e;
+  --shadow: 0 24px 80px -48px rgba(28, 27, 26, 0.45);
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-space);
+  --font-serif: var(--font-fraunces);
+}
+
+@layer base {
+  * {
+    border-color: var(--line);
+  }
+
+  body {
+    background: radial-gradient(900px 420px at 18% 10%, #ffffff, transparent 65%),
+      radial-gradient(600px 400px at 80% 0%, #f3f7f5, transparent 70%),
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--font-space), system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.01em;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-fraunces), "Times New Roman", serif;
+    letter-spacing: -0.02em;
+  }
+}

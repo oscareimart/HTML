@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Evaluacion</title>
+  </head>
+  <body>
+    <main>
+      <h1>EXAMEN HTML & CSS📄🤓</h1>
+
+      <hr />
+
+      <form action="">
+        <label for="">Nombre</label><br />
+        <input
+          type="text"
+          title="Solo una palabra"
+          pattern="^[a-zA-Z]{2,}$"
+          required
+        /><br />
+
+        <label for="">Vocales AEO</label><br />
+        <input
+          type="text"
+          pattern="^.*A.*E.*O.*$"
+          title="La palabra debe contener las vocales A, E y O en ese orden."
+          required
+        /><br />
+
+        <label for="">Letras</label><br />
+        <input
+          type="text"
+          pattern="^.*A*.*E*.*I*.*O*.*U*.*$"
+          title="Puede haber cualquier cantidad de letras entre esas vocales."
+          required
+        /><br />
+
+        <label for="">No Vocales I & U</label><br />
+        <input
+          type="text"
+          pattern="^[^IUiu]+$"
+          title="No se permiten las vocales I ni U (ni en mayúsculas ni en minúsculas)."
+          required
+        /><br />
+
+        <label for="">Letras alfabeto</label><br />
+        <input
+          id="pass_"
+          type="text"
+          pattern="^[a-zA-Z]+$"
+          title="Solo se permiten letras del alfabeto (mayúsculas y minúsculas)."
+          required
+        /><br />
+
+        <label for="">No numeros, caracteres ni espacios</label><br />
+        <input
+          id="pass"
+          type="text"
+          pattern="^[^0-9]+$"
+          title="No se permiten números, espacios ni caracteres especiales."
+          required
+        />
+        <button>as</button>
+        <br />
+
+        <label for="">Campo obligatorio</label><br />
+        <input type="text" title="El campo debe ser obligatorio." required />
+
+        <hr />
+
+        <button type="submit">REGISTRAR ✅</button>
+      </form>
+    </main>
+  </body>
+</html>

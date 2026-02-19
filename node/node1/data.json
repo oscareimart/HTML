@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Oscar",
+    "lastname": "Ticona",
+    "username": "oticona",
+    "roles": ["Admin", "Auditor", "Editor"],
+    "expireDate": "2025-10-01"
+  },
+  {
+    "id": 2,
+    "name": "Carlos",
+    "lastname": "Sanches",
+    "username": "csanches",
+    "roles": ["Auditor", "Editor"],
+    "expireDate": "2025-10-01"
+  },
+  {
+    "id": 3,
+    "name": "Andres",
+    "lastname": "Romero",
+    "username": "aromero",
+    "roles": ["Admin"],
+    "expireDate": "2025-10-01"
+  },
+  {
+    "id": 4,
+    "name": "Maria",
+    "lastname": "Valdivia",
+    "username": "mvaldivia",
+    "roles": ["Auditor", "Editor"],
+    "expireDate": "2025-10-01"
+  },
+  {
+    "id": 5,
+    "name": "Homero",
+    "lastname": "Simpson",
+    "username": "hsimpson",
+    "roles": ["Editor"],
+    "expireDate": "2025-10-01"
+  }
+]

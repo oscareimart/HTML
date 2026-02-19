@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Detalle de Pago</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="modal">
+      <!-- Stepper -->
+      <div class="steps">
+        <div class="step active">1. Método</div>
+        <div class="step">2. Pago</div>
+        <div class="step">3. Confirmación</div>
+      </div>
+
+      <div class="content">
+        <!-- Left -->
+        <section class="left">
+          <h2>Método de pago</h2>
+
+          <div class="tabs">
+            <button class="tab active">QR</button>
+            <button class="tab">Efectivo</button>
+            <button class="tab">Tarjeta</button>
+          </div>
+
+          <div class="qr-box">
+            <img src="qr.png" alt="QR Pago" />
+            <button class="secondary">Subir comprobante</button>
+          </div>
+
+          <div class="amount-box">
+            <label>Monto restante</label>
+            <strong>Bs 154.00</strong>
+            <progress value="150" max="304"></progress>
+          </div>
+        </section>
+
+        <!-- Right -->
+        <aside class="right">
+          <h3>Resumen</h3>
+
+          <div class="item">
+            <span>Cotton T-Shirt x4</span>
+            <strong>Bs 39</strong>
+          </div>
+          <div class="item">
+            <span>Jabón Rejuveneciente x2</span>
+            <strong>Bs 29</strong>
+          </div>
+          <div class="item">
+            <span>Corte de Cabello x2</span>
+            <strong>Bs 45</strong>
+          </div>
+
+          <hr />
+
+          <div class="total">
+            <span>Total</span>
+            <strong>Bs 304.00</strong>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Footer -->
+      <footer>
+        <button class="cancel">Cancelar</button>
+        <button class="confirm">Confirmar pago Bs 304</button>
+      </footer>
+    </div>
+  </body>
+</html>
