@@ -20,14 +20,15 @@
 
         <label for="">Nombre del Cliente</label>
         <input
-          pattern="/([A-Za-z])/g"
+          pattern="^[A-Za-z0-9]{1,15}$"
           type="text"
           name="client-name"
           required
         /><br /><br />
 
         <label for="">Servicio</label>
-        <select name="service-type">
+        <select name="service-type" required>
+          <option value="">Seleccione...</option>
           <option value="transporte">Transporte</option>
           <option value="alojamiento">Alojamiento</option>
           <option value="alimentacion">Alimentación</option>
