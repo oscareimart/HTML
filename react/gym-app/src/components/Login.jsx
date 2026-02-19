@@ -14,7 +14,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div style={{ margin: "auto" }}>
       <FontAwesomeIcon size="6x" icon={faDumbbell} />
       <h1>Gym Manager Pro </h1>
       <h2>Inicia Sesion</h2>
