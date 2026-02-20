@@ -4,22 +4,22 @@ import {
   faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
-export default function UserWizard({ userLogged, logout, setUserLogged }) {
+export default function UserWizard() {
+  const { userLogged, logout, setUserLogged } = useAuth();
+
   const [user, setUser] = useState(userLogged);
   const handleChangeUser = (value) => {
-    // updateUser({ user });
-    setUser({ ...user, role: value, status: 1 });
+    setUser({ ...user, role: value, status: 1, menuSelected: "dashboard" });
   };
 
   const handleSubmit = () => {
-    console.log(user);
-
     setUserLogged(user);
   };
 
   return (
-    <div>
+    <div style={{ margin: "auto" }}>
       <h1>Configuracion de Usuario</h1>
       <p>
         <FontAwesomeIcon size="6x" icon={faUserAlt} />

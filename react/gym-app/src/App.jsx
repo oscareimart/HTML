@@ -11,30 +11,59 @@ import Dashboard from "./pages/Dashboard";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import CardId from "./components/CardId";
 import { useAuth } from "./context/AuthContext";
+import Layout from "./pages/Layout";
 
 function App() {
   const { userLogged, logout, setUserLogged } = useAuth();
-  console.log(userLogged);
 
   const [users, setUsers] = useLocalStorage("gym-users", []); // useState([]);
   const [diets, setDiets] = useState([]);
   const [saldo, setSaldo] = useState(0);
   const [userSelected, setUserSelected] = useState("SinNombre");
 
+  console.log(users);
+
   if (!userLogged) {
     return <Login />;
   }
   if (userLogged.status === 0) {
+    return <UserWizard />;
+  }
+  if (userLogged.status === 1 && userLogged.menuSelected === "dashboard") {
     return (
-      <UserWizard
-        userLogged={userLogged}
-        logout={logout}
-        setUserLogged={setUserLogged}
-      />
+      <Layout>
+        <Dashboard
+          users={users}
+          diets={diets}
+          saldo={saldo}
+          userSelected={userSelected}
+        />
+      </Layout>
     );
   }
-  if (userLogged.status === 1) {
-    return <Dashboard />;
+  if (userLogged.status === 1 && userLogged.menuSelected === "users") {
+    return (
+      <Layout>
+        <div className="card">
+          <RegisterFormUser users={users} setUsers={setUsers} />
+          <UserList
+            users={users}
+            setUserSelected={setUserSelected}
+            setSaldo={setSaldo}
+          />
+        </div>
+      </Layout>
+    );
+  }
+  if (userLogged.status === 1 && userLogged.menuSelected === "diets") {
+    return (
+      <Layout>
+        <div className="card">
+          <RegisterFormDiet diets={diets} setDiet={setDiets} />
+          <DietList diets={diets} />
+        </div>
+      </Layout>
+    );
   }
   return (
     <div>
@@ -42,6 +71,15 @@ function App() {
       <p> Bienvenido, {userLogged?.name}</p>
       <button className="btn-logout" onClick={logout}>
         Cerrar Sesion
+      </button>
+      <button
+        style={{ marginLeft: "15px" }}
+        className="btn-logout"
+        onClick={() =>
+          setUserLogged({ ...userLogged, menuSelected: "dashboard" })
+        }
+      >
+        Atras
       </button>
 
       <div className="content">

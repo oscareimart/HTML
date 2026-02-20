@@ -16,6 +16,7 @@ export function AuthProvider({ children }) {
           email: firebaseUser.email,
           name: firebaseUser.displayName,
           status: 0,
+          menuSelected: "dashboard",
           role: "member",
         });
       } else {

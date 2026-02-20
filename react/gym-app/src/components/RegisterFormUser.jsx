@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+const styleInput = {
+  height: "25px",
+  margin: "15px 15px 0px 15px",
+  color: "var(--text)",
+  background: "var(--bg-a)",
+  borderRadius: "5px",
+};
+
 function RegisterFormUser({ users, setUsers }) {
   const [name, setName] = useState("");
   const [saldo, setSaldo] = useState(0);
@@ -20,10 +28,26 @@ function RegisterFormUser({ users, setUsers }) {
     setPlan("Principiante");
   };
   return (
-    <form onSubmit={handleSubmit} className="forms">
+    <form
+      onSubmit={handleSubmit}
+      className="forms"
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        padding: "15px",
+        border: "1px solid",
+        borderRadius: "15px",
+        // maxWidth: "500px",
+        justifySelf: "center",
+        marginTop: "25px",
+        marginBottom: "25px",
+      }}
+    >
       <h2>Registro de Usuario 🤵</h2>
 
       <input
+        style={styleInput}
         type="text"
         placeholder="Nombre"
         value={name}
@@ -31,12 +55,14 @@ function RegisterFormUser({ users, setUsers }) {
         required
       />
       <input
+        style={styleInput}
         type="number"
         placeholder="Saldo"
         onChange={(e) => setSaldo(e.target.value)}
         required
       />
       <select
+        style={{ ...styleInput, height: "30px" }}
         name=""
         id=""
         value={plan}
@@ -46,7 +72,9 @@ function RegisterFormUser({ users, setUsers }) {
         <option value="Intermedio">Intermedio</option>
         <option value="Avanzado">Avanzado</option>
       </select>
-      <button type="submit">Registrar</button>
+      <button style={{ margin: "15px" }} type="submit">
+        Registrar
+      </button>
     </form>
   );
 }

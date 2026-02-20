@@ -1,5 +1,13 @@
 import { useState } from "react";
 
+const styleInput = {
+  height: "25px",
+  margin: "15px 15px 0px 15px",
+  color: "var(--text)",
+  background: "var(--bg-a)",
+  borderRadius: "5px",
+};
+
 function RegisterFormUser({ diets, setDiet }) {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -19,10 +27,26 @@ function RegisterFormUser({ diets, setDiet }) {
     setDescription("");
   };
   return (
-    <form onSubmit={handleSubmit} className="forms">
+    <form
+      onSubmit={handleSubmit}
+      className="forms"
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        padding: "15px",
+        border: "1px solid",
+        borderRadius: "15px",
+        // maxWidth: "500px",
+        justifySelf: "center",
+        marginTop: "25px",
+        marginBottom: "25px",
+      }}
+    >
       <h2>Registro de Dieta 🥩</h2>
 
       <input
+        style={styleInput}
         type="text"
         placeholder="Nombre"
         value={name}
@@ -30,6 +54,7 @@ function RegisterFormUser({ diets, setDiet }) {
         required
       />
       <textarea
+        style={styleInput}
         name=""
         id=""
         value={description}
@@ -37,6 +62,7 @@ function RegisterFormUser({ diets, setDiet }) {
         placeholder="Aca describe la dieta"
       ></textarea>
       <select
+        style={{ ...styleInput, height: "30px" }}
         name=""
         id=""
         value={category}
@@ -47,7 +73,9 @@ function RegisterFormUser({ diets, setDiet }) {
         <option value="Definicion">Definicion</option>
         <option value="Nutricion">Nutricion</option>
       </select>
-      <button type="submit">Registrar</button>
+      <button style={{ margin: "15px" }} type="submit">
+        Registrar
+      </button>
     </form>
   );
 }
