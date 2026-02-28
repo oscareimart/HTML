@@ -11,14 +11,15 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (firebaseUser) => {
       if (firebaseUser) {
-        setUserLogged({
+        const user = {
           uid: firebaseUser.uid,
           email: firebaseUser.email,
           name: firebaseUser.displayName,
           status: 0,
           menuSelected: "dashboard",
           role: "member",
-        });
+        };
+        setUserLogged(user);
       } else {
         setUserLogged(null);
       }

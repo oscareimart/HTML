@@ -6,12 +6,21 @@ import {
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 
-export default function UserWizard() {
+export default function UserWizard({ setUsers }) {
   const { userLogged, logout, setUserLogged } = useAuth();
 
   const [user, setUser] = useState(userLogged);
   const handleChangeUser = (value) => {
     setUser({ ...user, role: value, status: 1, menuSelected: "dashboard" });
+
+    setUsers((prev) =>
+      prev.some((e) => e.name === user.name)
+        ? prev
+        : [
+            ...prev,
+            { id: Date.now(), name: user.name, plan: "Principiante", saldo: 0 },
+          ],
+    );
   };
 
   const handleSubmit = () => {
@@ -60,7 +69,11 @@ export default function UserWizard() {
           id=""
           style={{ height: "35px", padding: "5px", marginBottom: "10px" }}
           onChange={(e) => handleChangeUser(e.target.value)}
+          defaultValue={""}
+          required
+          // value={""}
         >
+          <option value="">Seleccione Opcion...</option>
           <option value="admin">Admin</option>
           <option value="trainer">Trainer</option>
           <option value="member">Member</option>

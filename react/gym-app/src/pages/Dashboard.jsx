@@ -1,18 +1,25 @@
 import { useAuth } from "../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCheck, faDiagnoses } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserCheck,
+  faDiagnoses,
+  faMoneyBill,
+} from "@fortawesome/free-solid-svg-icons";
 import CardId from "../components/CardId";
+import BarChartExample from "../components/dashboard/charts";
 
 const stylesCard = {
-  width: "350px",
-  height: "200px",
+  width: "100%",
+  // paddi
+  height: "250px",
   backgroundColor: "var(--bg-c)",
   border: "1px solid #333",
   // borderColor: "AccentColorText",
   borderStyle: "1px solid",
   borderRadius: "15px",
-  // margin: "15px",
+  // padding: "15px",
   display: "flex",
+  gap: "5px",
   alignItems: "center",
   justifyContent: "center",
   flexDirection: "column",
@@ -29,9 +36,31 @@ const styleCard = {
 export default function Dashboard({
   users = [],
   diets = [],
+  payments = [],
   saldo = 0,
   userSelected = "SinNombre",
 }) {
+  const usersChart = users.slice(0, 5);
+  console.log(usersChart);
+  const usersPaymentsPag = usersChart.map((u) => ({
+    ...u,
+    totalPayments: payments
+      .filter((p) => p.usuario?.id === u.id && p.estado === "Pagado")
+      .reduce((acc, cur) => acc + Number(cur.monto), 0),
+  }));
+  const usersPaymentsPen = usersChart.map((u) => ({
+    ...u,
+    totalPayments: payments
+      .filter((p) => p.usuario?.id === u.id && p.estado === "Pendiente")
+      .reduce((acc, cur) => acc + Number(cur.monto), 0),
+  }));
+  const usersPaymentsCan = usersChart.map((u) => ({
+    ...u,
+    totalPayments: payments
+      .filter((p) => p.usuario?.id === u.id && p.estado === "Cancelado")
+      .reduce((acc, cur) => acc + Number(cur.monto), 0),
+  }));
+
   const { userLogged, logout, setUserLogged } = useAuth();
   return (
     <>
@@ -54,29 +83,62 @@ export default function Dashboard({
       </div>
 
       <div
-        style={{ display: "flex", flexDirection: "row", marginBottom: "25px" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr",
+          marginBottom: "25px",
+          gap: "25px",
+        }}
       >
-        <div style={{ ...stylesCard, marginRight: "15px" }}>
+        <div style={stylesCard}>
           <div style={styleCard}>
             <FontAwesomeIcon size="2x" icon={faUserCheck} />
             <h3>Usuarios Registrados</h3>
             <strong>{users.length}</strong>
           </div>
         </div>
-        <div style={{ ...stylesCard, marginRight: "15px" }}>
+        <div style={stylesCard}>
           <div style={styleCard}>
             <FontAwesomeIcon size="2x" icon={faDiagnoses} />
             <h3>Dietas Registradas</h3>
             <strong>{diets.length}</strong>
           </div>
         </div>
-        <div style={stylesCard}>Card Usuarios</div>
+        <div style={stylesCard}>
+          <div style={styleCard}>
+            <FontAwesomeIcon size="2x" icon={faMoneyBill} />
+            <h3>Pagos Registrados</h3>
+            <strong>
+              {payments.length} |{" "}
+              {payments
+                .filter((p) => p.estado === "Pagado")
+                .reduce((acc, cur) => acc + Number(cur?.monto), 0)}{" "}
+              Bs
+            </strong>
+          </div>
+        </div>
       </div>
-      <CardId dietas={diets} userName={userSelected} saldo={saldo} />
-
-      {/* <UserList /> */}
-      {/* <TrainingPlan />
-        <DietList /> */}
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          marginBottom: "25px",
+          gap: "25px",
+        }}
+      >
+        <div style={stylesCard}>
+          <BarChartExample
+            usersPaymentsPag={usersPaymentsPag}
+            usersPaymentsPen={usersPaymentsPen}
+            usersPaymentsCan={usersPaymentsCan}
+          />
+        </div>
+        <div style={{ ...stylesCard }}>
+          {/* <div> */}
+          {/* <BarChartExample /> */}
+          {/* </div> */}
+        </div>
+      </div>
     </>
   );
 }

@@ -1,17 +1,16 @@
 import { useState } from "react";
+import {
+  styleFill,
+  styleForm,
+  styleInput,
+  styleRow,
+  styleButton,
+} from "../styles/formStyles";
 
-const styleInput = {
-  height: "25px",
-  margin: "15px 15px 0px 15px",
-  color: "var(--text)",
-  background: "var(--bg-a)",
-  borderRadius: "5px",
-};
-
-function RegisterFormUser({ users, setUsers }) {
+function RegisterFormUser({ users, setUsers, setPayments }) {
   const [name, setName] = useState("");
   const [saldo, setSaldo] = useState(0);
-  const [plan, setPlan] = useState("Principiante");
+  const [plan, setPlan] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,58 +22,70 @@ function RegisterFormUser({ users, setUsers }) {
       saldo,
     };
     setUsers([...users, newUser]);
+    setPayments((prev) => [
+      ...prev,
+      {
+        id: `P${Date.now()}`,
+        monto: saldo,
+        fecha: new Date().toISOString().split("T")[0], //toLocaleDateString("es-BO"),
+        estado: "Pagado",
+        usuario: newUser,
+        concepto: "Primer Pago de Inscripcion",
+      },
+    ]);
     setName("");
     setSaldo(saldo);
     setPlan("Principiante");
   };
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="forms"
-      style={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        padding: "15px",
-        border: "1px solid",
-        borderRadius: "15px",
-        // maxWidth: "500px",
-        justifySelf: "center",
-        marginTop: "25px",
-        marginBottom: "25px",
-      }}
-    >
+    <form onSubmit={handleSubmit} className="forms" style={styleForm}>
       <h2>Registro de Usuario 🤵</h2>
+      <div style={{ padding: "15px" }}>
+        <div style={styleRow}>
+          <div style={styleFill}>
+            <label htmlFor="">Nombre</label>
+            <input
+              style={styleInput}
+              type="text"
+              placeholder="Nombre"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <div style={styleFill}>
+            <label htmlFor="">Saldo Inicial</label>
+            <input
+              style={styleInput}
+              type="number"
+              placeholder="Saldo"
+              onChange={(e) => setSaldo(e.target.value)}
+              required
+            />
+          </div>
+        </div>
 
-      <input
-        style={styleInput}
-        type="text"
-        placeholder="Nombre"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
-      <input
-        style={styleInput}
-        type="number"
-        placeholder="Saldo"
-        onChange={(e) => setSaldo(e.target.value)}
-        required
-      />
-      <select
-        style={{ ...styleInput, height: "30px" }}
-        name=""
-        id=""
-        value={plan}
-        onChange={(e) => setPlan(e.target.value)}
-      >
-        <option value="Principiante">Principiante</option>
-        <option value="Intermedio">Intermedio</option>
-        <option value="Avanzado">Avanzado</option>
-      </select>
-      <button style={{ margin: "15px" }} type="submit">
-        Registrar
-      </button>
+        <div style={styleFill}>
+          <label htmlFor="">Plan</label>
+          <select
+            style={{ ...styleInput, height: "30px" }}
+            name=""
+            id=""
+            value={plan}
+            onChange={(e) => setPlan(e.target.value)}
+            required
+          >
+            <option value="">Seleccione...</option>
+            <option value="Principiante">Principiante</option>
+            <option value="Intermedio">Intermedio</option>
+            <option value="Avanzado">Avanzado</option>
+          </select>
+        </div>
+
+        <button style={styleButton} type="submit">
+          Registrar
+        </button>
+      </div>
     </form>
   );
 }

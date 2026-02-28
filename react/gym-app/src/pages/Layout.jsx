@@ -12,7 +12,9 @@ import {
 const stylesSidebar = {
   display: "flex",
   flexDirection: "column",
-  width: "250px",
+  // minHeight: "350px",
+  // maxHeight: "350px",
+  width: "300px",
   height: "100vh",
   backgroundColor: "var(--bg)", //"#0A0A0A",
   padding: "20px",
@@ -30,9 +32,9 @@ const stylesMain = {
   flex: 1,
   // display: "flex",
   flexDirection: "column",
-  overflow: "hidden",
+  overflow: "auto",
   padding: "20px",
-  width: "100%",
+  // width: "100%",
   borderLeft: "1px solid #525252",
   borderRight: "1px solid #525252",
   // backgroundColor: "#fff",
@@ -73,6 +75,7 @@ const menu = [
   { name: "Dashboard", path: "dashboard", canLoad: ["admin", "trainer"] },
   { name: "Usuarios", path: "users", canLoad: ["admin"] },
   { name: "Dietas", path: "diets", canLoad: ["admin", "trainer", "member"] },
+  { name: "Pagos", path: "payments", canLoad: ["admin", "trainer", "member"] },
   { name: "Sistema", path: "system", canLoad: ["admin"] },
 ];
 
@@ -88,10 +91,11 @@ export default function Layout({ children }) {
         </h2>
         <div style={{ borderTop: "1px solid" }}></div>
         <div style={{ paddingTop: "25px" }}>
-          {menu.map((item) => {
+          {menu.map((item, index) => {
             if (item.canLoad.includes(userLogged.role)) {
               return (
                 <div
+                  key={index}
                   className={`menu-item ${userLogged.menuSelected === item.name.toLowerCase() ? "active" : ""}`}
                   onClick={() => {
                     console.log(item.name.toLowerCase());
