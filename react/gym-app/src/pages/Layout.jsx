@@ -76,7 +76,7 @@ const menu = [
   { name: "Usuarios", path: "users", canLoad: ["admin"] },
   { name: "Dietas", path: "diets", canLoad: ["admin", "trainer", "member"] },
   { name: "Pagos", path: "payments", canLoad: ["admin", "trainer", "member"] },
-  { name: "Sistema", path: "system", canLoad: ["admin"] },
+  // { name: "Sistema", path: "system", canLoad: ["admin"] },
 ];
 
 export default function Layout({ children }) {
